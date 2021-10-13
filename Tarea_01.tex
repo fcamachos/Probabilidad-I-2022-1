@@ -1,0 +1,509 @@
+\documentclass[letterpaper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,mexico]{babel}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{titlepic}
+\usepackage[export]{adjustbox}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[hmargin=1in, vmargin=1in]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{tasks}
+\lhead{\Carrera}
+\chead{\Materia}
+\rhead{\Semestre}
+\cfoot{\Escuela}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\providecommand{\norm}[1]{\lVert#1\rVert}
+
+
+%=================================================================================
+%	Definición de comandos
+%=================================================================================
+\newcommand{\informacion}[1]{
+\begin{center}
+\fbox{\fbox{\parbox{\textwidth}{{\footnotesize#1}}}}
+\end{center}
+\vspace{5mm}}
+\newcommand{\datos}{\makebox[0.7\textwidth]{Nombre:~\hrulefill} Fecha:~\hrulefill}
+\newcommand{\pregunta}[2]{\item{#2}~{(#1 puntos)}\\ \vspace{5mm}						       
+			{\bf Solución}}														  
+
+\newcommand{\Carrera}{Ciencias de la Computación}
+\newcommand{\Escuela}{\textbf{Facultad de Ciencias, UNAM}}            	%<---------
+\newcommand{\Semestre}{2022-1}											%<--------- Semestre
+%
+\newcommand{\Materia}{\textbf{Probabilidad I}}									%<--------- Materia
+\newcommand{\TareaX}{Tarea 1}											%<--------- Tarea No
+%
+\newcommand{\uvec}[1]{\boldsymbol{\hat{\textbf{#1}}}}
+
+\title{
+    \begin{minipage}{0.5\textwidth}%       
+			\includegraphics[height=3cm, left]{unam.png}%        
+    \end{minipage}%
+    \begin{minipage}{0.5\textwidth}%
+			\includegraphics[height=3cm, right]{fciencias.png}%
+    \end{minipage}
+
+	\begin{center}
+	\vspace{-134pt}
+	\textbf{\Materia}\\[0.2cm]
+	\large \textbf{ Semestre \Semestre }\\[0.2cm]
+	Prof. José Antonio Flores Díaz\\ [0.2cm]													%<--------- Prof
+	Ayud. María de los Ángeles Escalante Membrillo\\ [0.2cm]													%<--------- Ayud
+	\textbf{\TareaX}
+	\end{center}
+	\vspace{10pt}
+	\rule{17cm}{0.3mm}
+	\begin{flushright}
+	\vspace{-3pt}
+	\end{flushright}
+	% \vspace{5cm}
+	% \textbf{Title}
+}	
+\renewcommand{%
+	\contentsname}{\vspace{-1cm} \hfill\bfseries\LARGE Índice \hfill \vspace{0.2cm}%
+}
+
+\author{\vspace{-2cm} \\Camacho Sosa Fernando\\Jiménez Martínez Mónica\\Mejía Chong Laisiu}
+\date{}
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%            CARÁTULA            %%%%%%%%%%%%%%%%%%%%%%%%%
+\maketitle
+
+\begin{enumerate}
+
+% -----------------------------------------------------
+% Problema uno
+% -----------------------------------------------------
+\item  Considere las secuencias de 10 símbolos dados por un ``más'' (+) o por un ``menos'' (-)
+
+\begin{enumerate}
+	\item ¿Cuántas secuencias distintas son posibles?
+	$$
+	A= {V_r}_k^n
+	$$
+	$$
+	{V_r}_k^n =n^k \qquad {V_r}_{10}^2= 2^{10} = 1024
+	$$
+	$$
+	A= 1024 \text{ secuencias distintas.}
+	$$
+
+	\item ¿Cuántas de las secuencias en a) tienen al menos ocho símbolos ``+'' en ellas?
+	$$
+	B= C_{10}^{10} + C_{9}^{10} + C_{8}^{10}
+	$$
+	$$
+	C^n_r= \frac{n!}{r!(n-r)!}
+	$$
+	$$
+	B= \frac{10!}{10!(10-10)!} + \frac{10!}{9!(10-9)!} + \frac{10!}{8!(10-8)!} 
+	$$
+	
+	$$
+	B= 1+10+45 = 56
+	$$
+
+	\item ¿Cuántas tienen exactamente cinco ``+'' y cinco ``-''?
+	
+	$$
+	C = C^5_5 = 252
+	$$
+
+	\item De las secuencias en c) ¿Cuántas tienen al menos cuatro ``+'' seguidos?
+	
+	$$
+	D = 2^5 + 2^4 = 32 + 16 = 48
+	$$
+
+	\item De las secuencias en c) ¿Cuántas tienen exactamente dos ``+'' a la izquierda de la mitad de la secuencia?
+	
+	$$
+	E = PR^5_{3,2} = \frac{5!}{3!2!} = 10
+	$$
+
+\end{enumerate}
+
+\item Se lanzan tres dados, ¿Cuántos resultados elementales hay: 
+\begin{enumerate}
+	\item En la más detallada clasificación de los resultados?
+	
+	$6^3 = 216$ resultados posibles. 
+
+	\item Si sólo se está interesado en el número total de puntos?
+	
+	Mínimo por tirada: $3$. Máximo por tirada: $18$
+	
+	$3 \leq x \leq 18$
+
+	\item Si se está interesado en las diferentes combinaciones del total de puntos (tales como 2,3,3) pero no en las cuales el dado tiene tal número de puntos (en distinto orden con la misma combinación).
+	
+	\begin{table}[h!]
+		\centering
+		\begin{tabular}{|c | c |}\hline
+			Resultado & Combinaciones posibles \\\hline
+			3 & 1\\
+			4&1\\
+			5&2\\
+			6&3\\
+			7&4\\
+			8&5\\
+			9&6\\
+			10&6\\
+			11&6\\
+			12&6\\
+			13&5\\
+			14&4\\
+			15&3\\
+			16&2\\
+			17&1\\
+			18&1\\\hline 
+			Total & 56 \\\hline
+		\end{tabular}
+	\end{table}
+
+	56 combinaciones diferentes posibles.	
+
+\end{enumerate}
+
+\item A lanza seis dados y gana si obtiene al menos un seis. B lanza doce dados y gana si obtiene al menos dos seises. ¿Quién tiene la mayor probabilidad de ganar?
+
+$$
+P(A)= \frac{C^6_6+C^6_5+C^6_4+C^6_3+C^6_2+C^6_1}{6^6}= \frac{1+6+15+20+15+6}{46 \, 656} = \frac{63}{46 \, 656} = \frac{7}{5 \, 184}
+$$
+$$
+P(B)= \frac{C^{12}_{12}+C^{12}_{11}+C^{12}_{10}+C^{12}_9+C^{12}_8+C^{12}_7+C^{12}_6+C^{12}_5+C^{12}_4+C^{12}_3+C^{12}_2}{6^{12}} 
+$$
+$$
+P(B)= \frac{1+12+66+220+495+792+924+792+495+220+66}{2 \, 176 \, 782 \, 336} = \frac{4080}{2 \, 176 \, 782 \, 336}
+$$
+$$
+P(B)= \frac{85}{45\,349\,632} %1.87 x10-6
+$$
+
+Como $P(A)>P(B)$, entonces, A tiene mayor probabilidad de ganar.
+
+\item En un recipiente se encuentran 3 bolas blancas y 8 negras, se saca una bola del recipiente y se registra el color de la misma para posteriormente regresarla al recipiente, dos personas deciden jugar en esta forma y determinan que ganará aquel que saque primero una bola blanca. Especifique la probabilidad de que gane el primer jugador.
+
+$$
+P(A) = \frac{3}{11}
+$$
+
+\item Determine la probabilidad de que: 
+\begin{enumerate}
+	\item Los cumpleaños de 12 personas caigan en diferentes meses (suponga probabilidades iguales para los doce meses).
+	
+	$$
+	P(A)= \frac{12}{12} * \frac{11}{12} * \frac{10}{12} * \frac{9}{12} * \frac{8}{12} * \frac{7}{12} * \frac{6}{12} * \frac{5}{12} * \frac{4}{12} * \frac{3}{12} * \frac{2}{12} * \frac{1}{12}= 0.000053
+	$$
+
+	\item Los cumpleaños de 6 personas caigan exactamente en dos meses. 
+	
+	% $$
+	% P(B)= 1 * \frac{2}{12} * \frac{2}{12} * \frac{2}{12} * \frac{2}{12} * \frac{2}{12} = \frac{32}{248\,832}
+	% $$
+	$$
+	P (B) = \frac{C_12^2 * (2^6 - 2) }{12^6} = \frac{66 * 62}{12^6} = 0.0013
+	$$
+
+
+\end{enumerate}
+
+\item Pruebe o demuestre lo contrario:  
+\begin{enumerate}
+	\item Si  $P(A)=P(B)=p$ entonces $P(A\cap B)\leq p^2$
+	
+	Como $P(A) = P(B)$, como sabemos que $A \cap A$ = A, entonces $P(A\cap B) = P(A)= p$ y $p \leq p^2$, por lo tanto, la afirmación es correcta. 
+	%Por Teorema tenemos que $P(A)=P(A \cap B) + P(A \cap B^c)$
+
+	\item Si $P(A^c) = \alpha $; $P(B^c)= \beta \Rightarrow  P(A\cap B)\leq 1 - \alpha - \beta $ 
+	
+	Por Teorema sabemos que
+	$$P(A \cap B) = P(A)-P(A-B)$$
+	y sabemos que 
+	$$P(A)=1-P(A^c)$$ Entonces 
+	$$P(A \cap B) = 1 - \alpha - P(A-B)$$	
+	También sabemos por teorema que 
+	$$P(A-B)= P(A \cap B^C)$$ %, es decir, $P(A-B)= P(A \cap \beta)$.
+	Sabemos que $P(A \cap B^C)  \in P(B^c)$, es decir, $P(A \cap B^C)  \subseteq  \beta$, por lo tanto:
+	%Ahora nos enfrentamos a dos casos, uno en el que $P (A \cap \beta) = 0 $  o en el que $P (A \cap \beta) > 0 $
+	$$
+	P(A\cap B)\leq 1 - \alpha - \beta
+	$$
+
+	\item Si $P(A) = P(B^c) \Rightarrow A^c = B$
+	
+	Sabemos por teorema que 
+	$$
+	P(A) = 1 - P (A^c) \text{ y por consiguiente } P(B^c) = 1 - P (B^{c^c})
+	$$
+
+	Sustituyendo tenemos: 
+	$$
+	1-P(A^c) = 1-P(B)
+	$$
+	$$
+	P(A^c) = P(B)
+	$$
+	$$
+	\therefore A^c = B
+	$$
+
+\end{enumerate}
+
+\item En un cierto pueblo con 100,000 habitantes hay tres periódicos: I, II y III. La proporción de gente que lee esos periódicos es como sigue:
+
+\begin{tabular}[h!]{l l l}
+	I: 10\% & I y II: 8\% & I y II y III:  1\%\\
+	II: 30\% &  I y III: 2\% & \\
+	III: 5\% & II y III: 4\% & 
+\end{tabular}
+
+\begin{enumerate}
+	\item ¿Cuánta gente lee algún periódico?
+	
+	Sea A: Lee algún periódico: 
+
+	$A: P(I \cup II \cup III) - P(I\cap II + I \cap III + II \cap III) + P(I \cap II \cap III)$
+
+	$A: (10\%+30\%+5\%) - (8\%+2\%+4\%) + 1\%$
+
+	$A: 32\% = 32\, 000$
+
+	\item Encuentre el número de personas que leen solamente un periódico.
+	
+	Sea B: Sólo lee 1 periódico. 
+
+	Tenemos que
+	\begin{equation}\label{0}
+		P(B) = P(\text{`sólo lee I'}) + P(\text{`sólo lee II'}) + P(\text{`sólo lee III'})
+	\end{equation}
+
+
+	Para P(`sólo lee I') = $P (I \cap II^c \cap III^c  )$ 
+
+	Sabemos que $P(I)= P(I \cap II^c \cap III^c) + P(I \cap II \cap III^c) + P(I \cap II^c \cap III) + P(I \cap II \cap III)$
+
+	Por lo tanto
+	\begin{equation} \label{1}
+		P(I \cap II^c \cap III^c) = P(I) - P(I \cap II \cap III^c) - P(I \cap II^c \cap III) - P(I \cap II \cap III)		
+	\end{equation}
+	$$
+	P(I \cap II^c \cap III^c) = 10\% - 1\% - P(I \cap II \cap III^c) - P(I \cap II^c \cap III)
+	$$	
+	También sabemos que $P(I \cap II \cap III^c) + P(I \cap II \cap III) = P(I \cap II)$
+	
+	Es decir, $P(I \cap II \cap III^c) = P(I \cap II) - P (I \cap II \cap III) $
+
+	Por lo tanto; $P(I \cap II \cap III^c) = - 1\% + 8\% = 7\%$
+
+	De modo análogo resolvemos $P(I \cap II^c \cap III)$	
+	$$P(I \cap II^c \cap III) + P(I \cap II \cap III) = P(I \cap III)$$
+	$$P(I \cap II^c \cap III) + 1\% = 2\% $$
+	$$P(I \cap II^c \cap III) = 1\% $$
+
+	Sustituyendo en \eqref{1} tenemos:
+
+	$$ P(I \cap II^c \cap III^c) = 10\% - 1\% - 7\% - 1\% = 1\% $$
+	%$$ P(I \cap II^c \cap III^c) = 1\% $$
+
+	Siguiendo los mismos pasos para P(`sólo lee II') $P(I^c \cap II \cap III^c)$ tenemos: 
+	\begin{equation}\label{2}
+		P(I^c \cap II \cap III^c) = P(II) - P(I \cap II \cap III^c) - P(I^c \cap II \cap III) - P(I \cap II \cap III)
+	\end{equation}
+	$$
+	P(I \cap II \cap III^c) = P(I \cap II)-P(I \cap II \cap III) = 8\% - 1\% = 7\%
+	$$
+	$$
+	P(I^c \cap II \cap III) = P(II \cap III)-P(I \cap II \cap III) = 4\% - 1\% = 3\%
+	$$
+	Sustituyendo en \eqref{2}: 
+	$$
+	P(I^c \cap II \cap III^c) = 30\% - 7\% -3\% -1\% = 19\% 
+	$$
+	\clearpage
+	% Solo lee III
+	Para P(`sólo lee III'):
+	\begin{equation}\label{3}
+		P(I^c \cap II^c \cap III) = P(III) - P(I \cap II^c \cap III) - P(I^c \cap II \cap III) - P(I \cap II \cap III)
+	\end{equation}
+	$$
+	P(I \cap II^c \cap III) = P(I \cap III)-P(I \cap II \cap III) = 2\% - 1\% = 1\%
+	$$	
+	Sustituyendo en \eqref{3}: 
+	$$
+	P(I^c \cap II^c \cap III) = 5\% - 1\% -3\% -1\% = 0\% 
+	$$
+
+	Regresando a \eqref{0} tenemos: 
+	$$
+	P(B) = 1\% + 19\% +0\% = 20\%
+	$$
+
+	Por lo tanto, el número de personas que sólo leen un periódico es: $20\,000$
+
+	\item ¿Cuánta gente lee al menos dos periódicos?
+	
+	Sea C: `Lee al menos dos periódicos'
+
+	$P(C) = P(I \cap II) + P(I \cap III) + P(II \cap III) - P(I \cap II \cap III) = 8\% +2\% +4\% - 1\% = 13\%$
+
+	Por lo tanto, $13\,000$ personas leen al menos dos periódicos.
+
+	\item Si I y III son periódicos matutinos y II es un periódico vespertino, ¿Cuánta gente lee al menos un periódico matutino y uno vespertino?
+	
+	Sea D: `lee al menos un periódico matutino y un vespertino'
+
+	E: `Lee al menos un periódico matutino'
+
+	F: `Lee al menos un periódico vespertino'
+
+
+	$P(D)= P(E \cap F) = P(E) - P(E \cap F^c) = P(E) - P (E - F)$
+	% $P(D)= P(F|E) = \frac{P(E \cap F)}{P(E)}$
+
+	% $P(E \cap F) = P(E) - P(E \cap F^c) = P(E) - P (E - F)$
+
+	$P(E)= P(I) \cup P(III) = 10\% + 5\% - 2\% = 13\%$
+
+	%$P(E \cap F^c) = P(I \cap II) \cup P(II \cap III) = 12\%$
+	$P(D) = P(E) - P (E - F) = 13\% - (13\% - 30\%) = 30\%$
+
+	% $\therefore P(D)= 13\% - 12\% = 1\%$
+	
+	La gente que lee al menos un periódico matutino y uno vespertino son $30\,000$.
+
+	\item ¿Cuánta gente lee solamente un periódico matutino y vespertino?
+	
+	Sea G: (`Sólo lee un periódico matutino y un vespertino')
+	Sea H: (`Sólo lee un periódico matutino')
+
+	$P(G) = P(H) \cap P(F)$
+	$P(H)=(P(I) \cap P(III^c)) \cup (P(III) \cap P(I^c))$
+	$P(I) \cap P(III^c) = P(I)- P(I \cap III) = 10\% - 2\% = 8\%$
+	$P(III) \cap P(I^c)= P(III) - P(I \cap III) = 5\% - 2\% = 3\% $
+	$P(H)= 8\% + 3\% = 11\%$
+	
+
+\end{enumerate}
+
+\item Sean E, F y G tres eventos. Encuentre expresiones para los eventos tales que:
+
+\begin{enumerate}
+	\item Solamente E ocurra
+	
+	$$
+	E \cap \bar{F} \cap \bar{G}
+	$$
+
+	\item Ambos E y G pero F no ocurra 
+	
+	$$ E \cap G \cap \bar{F} $$
+
+	\item Al menos uno de los eventos ocurra 
+	
+	$$ E \cup F \cup G $$
+
+	\item Al menos dos de los eventos ocurran 
+	
+	$$ (E \cap F) \cup (E \cap G) \cup (G \cap F) $$
+
+	\item Los tres ocurran 
+	
+	$$ E \cap F \cap G $$
+
+	\item Ninguno de los eventos ocurra 
+	
+	$$ \bar{E} \cap \bar{F} \cap \bar{G} $$
+
+	\item A lo más uno de ellos ocurra 
+	
+	$$
+	(E \cap \bar{F} \cap \bar{G}) \cup (F \cap \bar{E} \cap \bar{G}) \cup (\bar{E} \cap \bar{F} \cap \bar{G})
+	$$
+
+	\item A lo más dos de ellos ocurran 
+	
+	$$
+	(E \cap F \cap \bar{G}) \cup (E \cap \bar{F} \cap G) \cup (\bar{E} \cap F \cap G) \cup (E \cap \bar{F} \cap \bar{G}) \cup (F \cap \bar{E} \cap \bar{G}) \cup (G \cap \bar{E} \cap \bar{F}) \cup (\bar{E} \cap \bar{F} \cap \bar{G})
+	$$
+
+	\item Exactamente dos de ellos ocurran 
+	
+	$$
+	(E \cap F \cap \bar{G}) \cup (E \cap G \cap \bar{F}) \cup (F \cap G \cap \bar{E})
+	$$
+
+	\item A lo más tres de ellos ocurran 	
+	$$
+	(E \cap F \cap G) \cup (E \cap F \cap \bar{G}) \cup (E \cap \bar{F} \cap G) \cup (\bar{E} \cap F \cap G) \cup (E \cap \bar{F} \cap \bar{G}) \cup (F \cap \bar{E} \cap \bar{G}) \cup (G \cap \bar{E} \cap \bar{F}) \cup (\bar{E} \cap \bar{F} \cap \bar{G})
+	$$
+\end{enumerate}
+
+\item[14.] Una urna contiene tres bolas rojas, dos blancas y una azul. Una segunda urna contiene una bola roja, dos blancas y tres azules. 
+
+\begin{enumerate}
+	\item Una bola es seleccionada aleatoriamente de cada urna.
+	\begin{enumerate}
+		\item Describa el espacio muestral para este experimento
+		
+		Sea S el conjunto de $(x,y)$ que indican $x$ es la bola extraída de la primera urna y $y$ indica la bola extraída de la segunda urna, $r$ = roja, $b$ = blanca, $a$ = azul
+
+		$$
+		S=\{ (r,r), (r,b), (r,a), (b,r), (b,b), (b,a), (a,r), (a,b), (a,a) \}
+		$$
+
+		\item Encuentre la probabilidad de que ambas bolas sean del mismo color.
+		
+		Primero, calculamos la probabilidad de que ambas sean rojas. 
+		$$P(R_1)= \frac{3}{6} = \frac{1}{2} \qquad P(R_2) = \frac{1}{6} \qquad P(R_1 \cap R_2)= \frac{1}{2} * \frac{1}{6} = \frac{1}{12} $$
+
+		Probabilidad de que ambas sean blancas
+
+		$$P(B_1)= \frac{2}{6} = \frac{1}{3} \qquad P(B_2) = \frac{2}{6}= \frac{1}{3} \qquad P(B_1 \cap B_2)= \frac{1}{3} * \frac{1}{3} = \frac{1}{9} $$
+
+		Probabilidad de que ambas sean azules
+
+		$$P(A_1)= \frac{1}{6} \qquad P(A_2) = \frac{3}{6}= \frac{1}{2} \qquad P(A_1 \cap A_2)= \frac{1}{6} * \frac{1}{2} = \frac{1}{12} $$
+
+		Probabilidad de que ambas sean del mismo color 
+
+		$$P(R_1 \cap R_2) \cup P(B_1 \cap B_2) \cup P(A_1 \cap A_2) = \frac{1}{12} + \frac{1}{9} + \frac{1}{12}= \frac{3+4+3}{36} = \frac{10}{30} = \frac{5}{18}$$
+
+		\item Es la probabilidad de que ambas bolas sean rojas más grande que la probabilidad de que ambas sean blancas.
+		
+		No, ya que $P(B_1 \cap B_2) = \frac{1}{9} > P(R_1 \cap R_2) = \frac{1}{12}$
+
+	\end{enumerate}
+	\item Las bolas de las dos urnas son mezcladas juntas en una sola urna y entonces se toma una muestra de 3 bolas. Encuentre la probabilidad de que los tres colores estén representados en la muestra. 
+	\begin{enumerate}
+		\item Con reemplazo.
+		
+		$$
+		P(R) = \frac{4}{12} * \frac{4}{12} * \frac{4}{12} = \frac{1}{3} * \frac{1}{3} * \frac{1}{3} = \frac{1}{27}
+		$$
+
+		\item Sin reemplazo.
+		
+		$$
+		P(S) = \frac{ {4 \choose 1} * {4 \choose 1} * {4 \choose 1} }{ {12 \choose 3} } = \frac{4*4*4}{\frac{12*11*10}{3*2}} = \frac{4*4*4*3*2}{12*11*10} = \frac{384}{1320} = \frac{96}{330} = \frac{48}{165} = \frac{16}{55}
+		$$
+	\end{enumerate}
+\end{enumerate}
+
+
+
+\end{enumerate}
+
+
+\end{document}
